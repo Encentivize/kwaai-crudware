@@ -3,11 +3,23 @@ var express=require("express");
 var connectionString="mongodb://127.0.0.1:27017/testdb";
 var http=require("http");
 var bodyParser=require('body-parser');
+var mongo=require("mongodb")
+
+var kwaaiCrudware=null;
+mongo.MongoClient.connect(connectionString,function(err,database){
+    kwaaiCrudware =require('./index.js').crudWare(database);
+    prep();
+})
+
+
 
 var app=express();
-var kwaaiCrudware=require('./index.js').crudWare(connectionString);
+
 app.set('port', process.env.PORT || 1337);
 app.use(bodyParser.json());
+
+
+function prep(){
 
 var schema={
     properties:{
@@ -21,7 +33,7 @@ var schema={
 
 app.get("/test",
     function(req,res,next){
-        req.user={roles:["test1"]};
+        req.user={roles:["test"]};
         next();
     },
     kwaaiCrudwareUtils.onlyForRoles(["test"]),
@@ -60,3 +72,4 @@ app.patch("/test/:id",
 
 var server=http.createServer(app);
 server.listen(app.get('port'), function(){console.log('Express server listening on port ' + app.get('port'));});
+}

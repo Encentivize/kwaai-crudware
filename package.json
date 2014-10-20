@@ -1,6 +1,6 @@
 {
   "name": "kwaai-crudware",
-  "version": "0.1.3",
+  "version": "0.1.5",
   "description": "Connect/Express CRUD middleware specifically for CRUD operations and MongoDB",
   "main": "./index.js",
   "author": {
@@ -12,17 +12,18 @@
     "url": "git://github.com/martinza78/kwaai-crudware"
   },
   "dependencies": {
-      "kwaai-crud":"0.1.2"
+      "kwaai-crud":"0.1.3"
   },
     "devDependencies": {
         "express": "4.9.7",
-        "body-parser": "1.6.7"
+        "body-parser": "1.6.7",
+        "mongodb":"1.4.19"
     },
   "engines": {
     "node": ">= 0.10.0"
   },
   "license": "MIT",
   "homepage": "https://github.com/martinza78/kwaai-crudware",
-  "_id": "kwaai-crudware@0.1.3",
+  "_id": "kwaai-crudware@0.1.5",
   "_from": "kwaai-crudware@"
 }
